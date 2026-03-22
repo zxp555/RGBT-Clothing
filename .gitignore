@@ -1,0 +1,15 @@
+**/__pycache__/
+.vscode/
+runs/
+workspace/
+archive/
+third_party/
+wandb/
+demo/
+Adversarial_camou/
+model/mmdetection/*.pth
+model/eccv22/build/*
+model/eccv22/detectron2/_C*
+assets/*
+!assets/material/
+!assets/human3d/

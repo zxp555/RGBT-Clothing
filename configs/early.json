@@ -1,0 +1,85 @@
+{
+    "patch": {
+        "load_from": null,
+        "tshirt": {
+            "res_h": 340,
+            "res_w": 864,
+            "num_grid_h": 34,
+            "num_grid_w": 87,
+            "cell_h": 10,
+            "cell_w": 10
+        },
+        "trousers": {
+            "res_h": 484,
+            "res_w": 700,
+            "num_grid_h": 49,
+            "num_grid_w": 70,
+            "cell_h": 10,
+            "cell_w": 10
+        },
+        "learnable_tau": false
+    },
+    "dataset": {
+        "batch_size": 8,
+        "out_h": 704,
+        "out_w": 900
+    },
+    "simulator": {
+        "render": {
+            "dist": [2.2, 3.2],
+            "theta": [0, 360],
+            "pos_x": [-1, 1],
+            "pos_y": [-0.2, 0.2],
+            "scale": [2.0, 2.5],
+            "elev": [10, 14],
+            "light": "mix"
+        },
+        "color_mapping": true,
+        "material": {
+            "path": null
+        },
+        "tps_enhance": {
+            "enable": true,
+            "max_pixels": 2,
+            "point_step": 40
+        }
+    },
+    "train": {
+        "accumulate_step": 1,
+        "learning_rate": 0.01,
+        "ReduceLROnPlateau": {
+            "min_lr": 1e-6,
+            "lr_patience": 3,
+            "lr_factor": 0.5
+        },
+        "max_epoch": 1000,
+        "iou_thr": 0.5,
+        "conf_thr": 0.6,
+        "save_interval": 1000,
+        "save_dir": "./runs/earlyfusion",
+        "val_interval": 200,
+        "eval_at_start": true,
+        "grad_clip": null,
+        "binary_loss_scale": 0.0,
+        "random_cancel_prob": 0.7,
+        "num_val_samples": 500
+    },
+    "demo": {
+        "load_ckpt": null,
+        "num_examples": 100,
+        "save_dir": "./runs/demo_earlyfusion"
+    },
+    "wandb": {
+        "mode": "disabled",
+        "project": "3d_attack",
+        "name": "eccv22earlyfusion"
+    },
+    "detector": {
+        "joint": {
+            "name": "eccv22earlyfusion",
+            "input_h": 704,
+            "input_w": 900
+        }
+    },
+    "mode": "train"
+}

@@ -1,0 +1,73 @@
+{
+    "patch": {
+        "load_from": null,
+        "init": {
+            "mode": "random"
+        },
+        "learnable_tau": false,
+        "global_cell": 10
+    },
+    "dataset": {
+        "batch_size": 8,
+        "out_h": 800,
+        "out_w": 900
+    },
+    "simulator": {
+        "render": {
+            "dist": [2.2, 3.2],
+            "theta": [0, 360],
+            "pos_x": [-1, 1],
+            "pos_y": [-0.2, 0.2],
+            "scale": [2.0, 2.5],
+            "elev": [10, 14],
+            "light": "mix"
+        },
+        "color_mapping": true,
+        "material": {
+            "path": null
+        },
+        "tps_enhance": {
+            "enable": true,
+            "max_pixels": 2,
+            "point_step": 40
+        }
+    },
+    "train": {
+        "accumulate_step": 1,
+        "learning_rate": 0.01,
+        "ReduceLROnPlateau": {
+            "min_lr": 1e-6,
+            "lr_patience": 3,
+            "lr_factor": 0.5
+        },
+        "max_epoch": 1000,
+        "iou_thr": 0.5,
+        "conf_thr": 0.6,
+        "save_interval": 1000,
+        "save_dir": "./runs/latefusion_attack",
+        "val_interval": 200,
+        "eval_at_start": true,
+        "grad_clip": null,
+        "binary_loss_scale": 0.0,
+        "random_cancel_prob": 0.7,
+        "num_val_samples": 500
+    },
+    "demo": {
+        "load_ckpt": null,
+        "num_examples": 100,
+        "save_dir": "./runs/demo_latefusion_attack"
+    },
+    "wandb": {
+        "mode": "disabled",
+        "project": "3d_attack",
+        "name": "eccv22latefusion_attack"
+    },
+    "detector": {
+        "joint": {
+            "name": "eccv22latefusion",
+            "input_h": 800,
+            "input_w": 900
+        }
+    },
+    "mode": "train"
+}

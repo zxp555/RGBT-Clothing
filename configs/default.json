@@ -1,0 +1,109 @@
+{
+    "patch": {
+        "load_from": null,
+        "tshirt": {
+            "res_h": 340,
+            "res_w": 864,
+            "num_grid_h": 17,
+            "num_grid_w": 44,
+            "cell_h": 20,
+            "cell_w": 20
+        },
+        "trousers": {
+            "res_h": 484,
+            "res_w": 700,
+            "num_grid_h": 25,
+            "num_grid_w": 35,
+            "cell_h": 20,
+            "cell_w": 20
+        },
+        "init": {
+            "mode": "random"
+        },
+        "learnable_tau": false,
+        "global_cell": null
+    },
+    "dataset": {
+        "train": {
+            "rgb_path": "assets/data/rgb_train",
+            "thermal_path": "assets/data/thermal_train"
+        },
+        "val": {
+            "rgb_path": "assets/data/rgb_test",
+            "thermal_path": "assets/data/thermal_test"
+        },
+        "batch_size": 1,
+        "out_h": 800,
+        "out_w": 900
+    },
+    "simulator": {
+        "man": {
+            "obj_path": "assets/human3d/Man_join/man.obj",
+            "uv_rgb_path": "assets/human3d/Man_join/man.png",
+            "uv_thermal_path": "assets/human3d/Man_join/man_gray_adjusted.png"
+        },
+        "tshirt": {
+            "obj_path": "assets/human3d/tshirt_join/tshirt.obj",
+            "uv_thermal_dir": "assets/human3d/thermal_uv/tshirt/"
+        },
+        "trousers": {
+            "obj_path": "assets/human3d/trouser_join/trouser.obj",
+            "uv_thermal_dir": "assets/human3d/thermal_uv/trousers/"
+        },
+        "render": {
+            "dist": [2.5, 3.5],
+            "theta": [0, 360],
+            "pos_x": [-1, 1],
+            "pos_y": [-0.2, 0.2],
+            "scale": [2.0, 2.5],
+            "elev": [10, 14],
+            "light": "mix"
+        },
+        "material":{
+            "path": null
+        },
+        "color_mapping": false,
+        "tps_enhance":{
+            "enable": false,
+            "max_pixels": 2,
+            "point_step": 40
+        }
+    },
+    "train": {
+        "load_ckpt": null,
+        "accumulate_step": 16,
+        "learning_rate": 0.0001,
+        "ReduceLROnPlateau":{
+            "min_lr": null,
+            "lr_patience": null,
+            "lr_factor": null
+        },
+        "CosineAnnealingWarmRestarts":{
+            "T_0": null,
+            "T_mult": null,
+            "eta_min": null
+        },
+        "max_epoch": 100,
+        "iou_thr": 0.7,
+        "conf_thr": 0.6,
+        "save_interval": null,
+        "save_dir": null,
+        "val_interval": null,
+        "grad_clip": null,
+        "binary_loss_scale": 0.0,
+        "random_cancel_prob": 0.0,
+        "complete_separate": false,
+        "sigmoid_enhancement": false,
+        "ste": false
+    },
+    "demo": {
+        "load_ckpt": null,
+        "num_examples": 500,
+        "save_dir": "demo"
+    }, 
+    "wandb": {
+        "mode": "disabled",
+        "project": "attack3d-v3",
+        "name": "default"
+    }
+}
